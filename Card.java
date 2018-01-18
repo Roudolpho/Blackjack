@@ -20,10 +20,10 @@ public class Card
         
     }
     public String Name() {
-        
+        return valsChar[value];
     }
     public int Value() {
-        
+        return valsInt[value];
     }
     public int ID() {
         return value;
