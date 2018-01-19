@@ -1,11 +1,4 @@
-/**
- * This is a game of Blackjack where the player will play against one dealer
- *
- * @author Ryan Druffel
- * @version 0.0.1
- * 
- * 
- */
+
 import java.util.Scanner;
 public class BlackJack
 {
@@ -24,7 +17,7 @@ public class BlackJack
 
     }
 
-    public static void playAgain(){
+    public static void playAgain(){//prompts the user if they would like to play again
         String response = "null";
         while(!(response.equalsIgnoreCase("yes")||response.equalsIgnoreCase("no"))){
             System.out.println("Would you like to play again? (yes or no)");
@@ -37,7 +30,7 @@ public class BlackJack
         }
     }
 
-    public static void playRound(){
+    public static void playRound(){//plays a single round of Blackjack
         deck.shuffle();
         dealHands();
         int victor = 0;//0 is no winner yet, player victory is 1 and dealer victory is 2, tie is 3
@@ -78,17 +71,13 @@ public class BlackJack
         endGameDisplay(blackjack, victor);
     }
 
-    public static void dealHands(){
+    public static void dealHands(){//deals the players' starting hands
         Card[] dealing = {deck.drawCard(),deck.drawCard(),deck.drawCard(),deck.drawCard()};
         player.dealHand(dealing[0],dealing[2]);
         dealer.dealHand(dealing[1],dealing[3]);
     }
 
-    public static int checkVictor(){
-        return 0;
-    }
-
-    public static void endGameDisplay(boolean blackjack, int victor){
+    public static void endGameDisplay(boolean blackjack, int victor){//displays the end of game text
         displayGame(true);
         if(blackjack){
             System.out.println("Blackjack!");
@@ -102,7 +91,7 @@ public class BlackJack
         }
     }
 
-    public static String endScore(Player person){
+    public static String endScore(Player person){//this method helps arrange the end of game text
         String temp;
         if(person.bust()){
             temp = "busted";
@@ -114,7 +103,7 @@ public class BlackJack
         return temp;
     }
     
-    public static void displayGame(boolean isEndGame){
+    public static void displayGame(boolean isEndGame){//displays the game text
         System.out.println("-------------------------------------------------------------------------------");
         System.out.println("\t\t   Dealer Cards");
         System.out.println(dealer.printCards(isEndGame));
@@ -123,7 +112,7 @@ public class BlackJack
         System.out.println("-------------------------------------------------------------------------------");
     }
 
-    public static int analyzeGame(){
+    public static int analyzeGame(){//checks who the victor is
         if((dealer.bust()&&player.bust())||(dealer.handSum()==player.handSum())){
             return 3;
         } else if(player.bust()||(!dealer.bust()&&dealer.handSum()>player.handSum())){
