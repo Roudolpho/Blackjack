@@ -116,9 +116,9 @@ public class BlackJack
     
     public static void displayGame(boolean isEndGame){
         System.out.println("-------------------------------------------------------------------------------");
-        System.out.println("\t\tDealer");
+        System.out.println("\t\t   Dealer Cards");
         System.out.println(dealer.printCards(isEndGame));
-        System.out.println("\n\t\tPlayer");
+        System.out.println("\n\t\t   Player Cards");
         System.out.println(player.printCards());
         System.out.println("-------------------------------------------------------------------------------");
     }

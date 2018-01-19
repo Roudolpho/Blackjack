@@ -57,7 +57,7 @@ public class Player
     public String printCards(){
         String temp = "";
         for(int i = 0;i<numberOfCards;i++){
-            temp += hand[i].name() +"\t";
+            temp += "\t" + hand[i].name();
         }
         return temp;
     }
@@ -65,7 +65,7 @@ public class Player
     public String printCards(boolean hideCards){
         String temp = "";
         for(int i = 0;i<numberOfCards;i++){
-            temp += hand[i].name() +"\t";
+            temp += "\t" + hand[i].name();
         }
         return temp;
     }

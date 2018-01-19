@@ -13,14 +13,14 @@ public class PlayerDealer extends Player
         String temp = "";
         if(isEndGame){
             for(int i = 0;i<numberOfCards;i++){
-                temp += hand[i].name() +"\t";
+                temp += "\t" + hand[i].name();
             }
         } else {
             for(int i = 0;i<numberOfCards;i++){
                 if(i==0){
-                    temp += hand[i].name() +"\t";
+                    temp += "\t" + hand[i].name();
                 } else {
-                    temp += "Unknown" +"\t";
+                    temp += "\tUnknown";
                 }
             }
         }
