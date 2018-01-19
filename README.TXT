@@ -9,6 +9,6 @@ PURPOSE OF PROJECT: Technical Evaluation for the NextCentury
 VERSION or DATE: 1/18/2018
 HOW TO START THIS PROJECT: Open it in an IDE such as BlueJ
 AUTHORS: Ryan Druffel
-USER INSTRUCTIONS: Open the project in an IDE such as blue J and run the "main" method. 
+USER INSTRUCTIONS: Open the project in an IDE such as BlueJ and run the "main" method. 
 The method should have an array of arguments for the parameters but it should be left empty to run the game.
  
