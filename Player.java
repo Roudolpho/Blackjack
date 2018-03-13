@@ -3,8 +3,14 @@ public class Player
 {
     Card[] hand = new Card[11];
     int numberOfCards = 0;
+    public int level = 1;
+    int cash = 0;
     public Player() {
 
+    }
+    
+    public Player(int lev) {
+        level = lev;
     }
 
     public void dealHand(Card card1, Card card2){//sets the player's starting hand
@@ -12,7 +18,11 @@ public class Player
         hand[0] = card1;
         hand[1] = card2;
     }
-
+    
+    public void addCash(int c) {
+        cash += c;
+    }
+    
     public void hit(Card nextCard){//lets the player take another card
         hand[numberOfCards] = nextCard;
         numberOfCards++;
@@ -51,7 +61,7 @@ public class Player
         }
     }
 
-    public boolean makeChoice(){//this method is overwritten by extending classes so it is simply a placeholder for now
+    public boolean makeChoice(Deck deck){//this method is overwritten by extending classes so it is simply a placeholder for now
         return true;
     }
 

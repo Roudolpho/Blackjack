@@ -1,12 +1,27 @@
 
 public class PlayerDealer extends Player
 {
-    @Override public boolean makeChoice(){//decision making process for the dealer
-        if(handSum()>17){
-            return false;
-        } else {
-            return true;
+    
+    public PlayerDealer(int lev){
+        level = lev;
+    }
+    
+    @Override public boolean makeChoice(Deck deck){//decision making process for the dealer
+        switch(level){
+            case 0:
+                if(Math.random()>.49){return true;}
+                return false;
+            case 1: 
+                if(handSum()>17){
+                    return false;
+                } else {
+                    return true;
+                }
+            case 2:
+                if(handSum()+deck.checkNextCard()>21) {return false;}
+                return true;
         }
+        return false;
     }
 
     @Override public String printCards(boolean isEndGame){//this overwritten method prevents the dealers cards from being shown

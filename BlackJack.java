@@ -4,17 +4,53 @@ public class BlackJack
 {
     private static Scanner input = new Scanner(System.in);
     private static Player player = new PlayerUser();
-    private static Player dealer = new PlayerDealer();
+    private static Player dealer = new PlayerDealer(1);
     private static boolean gameRunning = true;
     private static boolean stillDealing = true;
     private static Deck deck = new Deck();
     public static void main(String args[]) {
+        System.out.println("Please choose a level for the dealer\neasy, medium or hard");
+        String temp = input.nextLine();
+        while(!(temp.equalsIgnoreCase("easy")||temp.equalsIgnoreCase("medium")||temp.equalsIgnoreCase("hard"))){
+            System.out.println("easy, medium or hard");
+            temp = input.nextLine();
+        }
+        switch(temp.toLowerCase()){
+            case "easy":
+            dealer = new PlayerDealer(0);
+            case "medium":
+            dealer = new PlayerDealer(1);
+            case "hard":
+            dealer = new PlayerDealer(2);
+        }
+        
+        player.addCash(ask("How much money would you like to start with?"));
         while(gameRunning){
             playRound();//deals and plays a round of BlackJack
             playAgain();//prompts the player to play again
         }
         System.out.println("End Program");
 
+    }
+    
+    public static int ask(String s) {
+        System.out.println(s);
+        String temp2 = input.nextLine();
+        while(!isInteger(temp2)) {
+            System.out.println(s);
+            temp2 = input.nextLine();
+        }
+        return Integer.parseInt(temp2);
+    }
+    
+    public static boolean isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        }
+        catch(Exception e) {
+            return false;
+        }
     }
 
     public static void playAgain(){//prompts the user if they would like to play again
@@ -48,17 +84,17 @@ public class BlackJack
         if(!blackjack)
             displayGame(false);
         while(victor==0){
-            if(player.makeChoice()){
+            if(player.makeChoice(deck)){
                 player.hit(deck.drawCard());
                 if(player.bust()){
                     victor = 2;
                 } else {
-                    if(dealer.makeChoice()){
+                    if(dealer.makeChoice(deck)){
                         dealer.hit(deck.drawCard());
                     }
                 }
             } else {
-                if(dealer.makeChoice()){
+                if(dealer.makeChoice(deck)){
                     dealer.hit(deck.drawCard());
                 } else {
                     victor = analyzeGame();
@@ -102,7 +138,7 @@ public class BlackJack
         }
         return temp;
     }
-    
+
     public static void displayGame(boolean isEndGame){//displays the game text
         System.out.println("-------------------------------------------------------------------------------");
         System.out.println("\t\t   Dealer Cards");

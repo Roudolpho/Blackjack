@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=PlayerUser
-comment1.params=
-comment1.target=boolean\ makeChoice()
+comment1.params=deck
+comment1.target=boolean\ makeChoice(Deck)
 numComments=2
