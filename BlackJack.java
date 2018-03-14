@@ -7,6 +7,7 @@ public class BlackJack
     private static Player dealer = new PlayerDealer(1);
     private static boolean gameRunning = true;
     private static boolean stillDealing = true;
+    private static int bet = 0;
     private static Deck deck = new Deck();
     public static void main(String args[]) {
         System.out.println("Please choose a level for the dealer\neasy, medium or hard");
@@ -23,7 +24,7 @@ public class BlackJack
             case "hard":
             dealer = new PlayerDealer(2);
         }
-        
+
         player.addCash(ask("How much money would you like to start with?"));
         while(gameRunning){
             playRound();//deals and plays a round of BlackJack
@@ -32,7 +33,7 @@ public class BlackJack
         System.out.println("End Program");
 
     }
-    
+
     public static int ask(String s) {
         System.out.println(s);
         String temp2 = input.nextLine();
@@ -42,7 +43,7 @@ public class BlackJack
         }
         return Integer.parseInt(temp2);
     }
-    
+
     public static boolean isInteger(String input) {
         try {
             Integer.parseInt(input);
@@ -54,18 +55,27 @@ public class BlackJack
     }
 
     public static void playAgain(){//prompts the user if they would like to play again
-        String response = "null";
-        while(!(response.equalsIgnoreCase("yes")||response.equalsIgnoreCase("no"))){
-            System.out.println("Would you like to play again? (yes or no)");
-            response = input.nextLine().trim();
-        }
-        if(response.equalsIgnoreCase("yes")){
-            gameRunning = true;
+        if(player.cash > 0){
+            String response = "null";
+            while(!(response.equalsIgnoreCase("yes")||response.equalsIgnoreCase("no"))){
+                System.out.println("Would you like to play again? (yes or no)");
+                response = input.nextLine().trim();
+            }
+            if(response.equalsIgnoreCase("yes")){
+                gameRunning = true;
+            } else {
+                gameRunning = false;
+            }
         } else {
+            System.out.println("You are out of cash");
             gameRunning = false;
         }
     }
-
+    
+    public void takeBet(){
+        
+    }
+    
     public static void playRound(){//plays a single round of Blackjack
         deck.shuffle();
         dealHands();
@@ -105,6 +115,9 @@ public class BlackJack
             }
         }
         endGameDisplay(blackjack, victor);
+        if(victor == 1){}else if(victor == 2){bet *= -1;} else {bet = 0;}
+        player.addCash(bet);
+        bet = 0;
     }
 
     public static void dealHands(){//deals the players' starting hands
