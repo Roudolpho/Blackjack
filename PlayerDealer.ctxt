@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=PlayerDealer
-comment1.params=lev
-comment1.target=PlayerDealer(int)
+comment1.params=
+comment1.target=PlayerDealer()
 comment2.params=deck
 comment2.target=boolean\ makeChoice(Deck)
 comment3.params=isEndGame
