@@ -1,10 +1,4 @@
 
-/**
- * Write a description of class Card here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Card
 {
     private final String[] valsChar = {"2","3","4","5","6","7","8","9","10","Jack","Queen","King","Ace"};//The name of the card corresponding to the card value

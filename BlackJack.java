@@ -4,8 +4,7 @@ public class BlackJack
     private static Scanner input = new Scanner(System.in);
     private static Player player = new PlayerUser();
     private static Player dealer = new PlayerDealer();
-    private static boolean gameRunning = true;
-    private static boolean stillDealing = true;
+    private static boolean gameRunning = true;//this will remain true until the user no longer wishes to play
     private static Deck deck = new Deck();
 
     public static void main(String args[]) {

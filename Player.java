@@ -3,15 +3,6 @@ public class Player
 {
     Card[] hand = new Card[11];
     int numberOfCards = 0;
-    public int level = 1;
-    
-    public Player() {
-
-    }
-    
-    public Player(int lev) {
-        level = lev;
-    }
 
     public void dealHand(Card card1, Card card2) {//sets the player's starting hand
         numberOfCards = 2;
@@ -26,25 +17,15 @@ public class Player
 
     public int handSum() {//sums up the score of the player's hand
         int sum = 0;
-        int acesInHand = 0;
-        for (int i = 0;i<numberOfCards;i++) {
+        boolean aceInHand = false;
+        for (int i = 0;i<numberOfCards;i++) {//this for loop sums all the cards in a players hand and assumes all aces are 1s
             sum+=hand[i].value();
-            if (hand[i].iD()==12) {
-                acesInHand++;
+            if (hand[i].iD()==12) {//This boolean identifies whether there is an ace or not
+                aceInHand = true;
             }
         }
-        for (int i = 0;i<acesInHand;i++) {
-            if (sum+10<=21) {
-                sum+=10;
-            }
-        }
-        return sum;
-    }
-
-    public int handSumWithoutAces() {//sums up the score 
-        int sum = 0;
-        for (int i = 0;i<numberOfCards;i++) {
-            sum+=hand[i].value();
+        if (aceInHand && sum+10<=21) {//if there is an ace in the player's hand, this checks whether using it as an 11 instead of a one is beneficial for the player or not and acts accordingly
+            sum += 10;
         }
         return sum;
     }

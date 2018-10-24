@@ -1,14 +1,11 @@
 public class PlayerDealer extends Player
 {
-    public PlayerDealer() {//initializes the dealer with a level
-
-    }
 
     @Override public boolean makeChoice(Deck deck) {//decision making process for the dealer
         return handSum()<17;//this is the simple choice the dealer makes
     }
 
-    @Override public String printCards(boolean isEndGame) {//this overwritten method prevents the dealers cards from being shown
+    @Override public String printCards(boolean isEndGame) {//this overwritten method prevents the dealers cards from being shown during the game
         String temp = "";
         if (isEndGame) {//this determines how to print the cards
             for (int i = 0;i<numberOfCards;i++) {//In this case the cards are printed normally

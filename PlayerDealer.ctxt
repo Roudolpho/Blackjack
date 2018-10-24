@@ -1,9 +1,7 @@
 #BlueJ class context
 comment0.target=PlayerDealer
-comment1.params=
-comment1.target=PlayerDealer()
-comment2.params=deck
-comment2.target=boolean\ makeChoice(Deck)
-comment3.params=isEndGame
-comment3.target=java.lang.String\ printCards(boolean)
-numComments=4
+comment1.params=deck
+comment1.target=boolean\ makeChoice(Deck)
+comment2.params=isEndGame
+comment2.target=java.lang.String\ printCards(boolean)
+numComments=3
